@@ -57,16 +57,14 @@ public class Program {
 			System.out.print("Check-in date (dd/mm/yyyy): ");
 			checkOut =sdf.parse(sc.next());
 			
-			Date now = new Date();
-			if(now.before(checkIn)|| now.before(checkOut)) {
-				System.out.println("2 if erro");
-			}
-			else if(!checkOut.after(checkIn)) {
-				System.out.println(" else if Error ");
+			
+			String error =reservation.updateDate(checkIn, checkOut);
+			if(error !=null) {
+				System.out.print("Error in reservation; " + error);
 			}
 			else {
-				reservation.updateDate(checkIn, checkOut);
 				System.out.println("Reservation "+ reservation);
+				
 			}
 			
 		}
